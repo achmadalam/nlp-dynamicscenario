@@ -3,14 +3,17 @@
 $text = $_GET["keyword"];
 
 require 'vendor/autoload.php';
+include('include/adodb/adodb.inc.php');
 
 $servername = "localhost";
 $username = "root";
 $password = "";
 $db = "corpus_bhsindo";
+$driver = 'mysqli';
 
 // Create connection
 $conn = new mysqli($servername, $username, $password,$db);
+
 
 // Check connection
 if ($conn->connect_error) {
@@ -86,7 +89,25 @@ for ($i=0; $i < count($result); $i++) {
  	}
 		$predata[$result[$i]]['after']=$predata[$result[$i+1]]['class'];
 		$predata[$result[$i]]['class']=$dt_hasil[$result[$i]];
- } 
+ }
+ 
+ foreach ($predata as $key => $value) {
+	 $class = $value['class'];
+	 $before = $value['before'];
+	 $after = $value['after'];
+
+	$adodb = ADONewConnection($driver); # eg. 'mysql' or 'oci8'
+	$adodb->debug = true;
+	$adodb->Connect($servername, $username, $password, $db);
+	$sql = "select detail_name from word_sentence_structure_detail where id_class = '$class' ";
+	if($before)
+		$sql .= " and before_class = '$before' ";
+	if($after)
+	    $sql .= " and after_class = '$after' ";
+	$rs = $adodb->GetOne($sql);
+
+	print_r($rs);
+ }
 
 print_r($predata);
 print_r($dt_hasil);
