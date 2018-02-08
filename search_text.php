@@ -29,11 +29,19 @@ Tahap Mencari Kata pada artikel
 $stemmerFactory = new \Sastrawi\Stemmer\StemmerFactory();
 $stemmer  = $stemmerFactory->createStemmer();
 
+$target_dir = "uploads/";
+$target_file = $target_dir . basename($_FILES["file-upload"]["name"]);
 
 $dt_hasil = array();
 
 $result = explode(' ', $_POST['keyword']);
 
+print_r($_FILES['file-upload']['name']);
+if($_FILES['file-upload']['name']){
+	move_uploaded_file($_FILES["file-upload"]["tmp_name"], $target_file);
+	$uploads = file_get_contents(''.$target_file, true);
+	$result = explode(' ', $uploads);
+}
 $i=0;
 
 if(1<2){
@@ -103,10 +111,12 @@ for ($i=0; $i < count($result); $i++) {
 	if($before)
 		$sql .= " and before_class = '$before' ";
 	if($after)
-	    $sql .= " and after_class = '$after' ";
+		$sql .= " and after_class = '$after' ";
+		
+	$sql .= " limit 1";
 	$rs = $adodb->GetOne($sql);
 
-	print_r($rs);
+	print_r($key."=".$rs);
  }
 
 print_r($predata);

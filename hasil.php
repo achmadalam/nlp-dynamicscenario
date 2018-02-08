@@ -1,9 +1,12 @@
 <?php 
+include('include/adodb/adodb.inc.php');
 
 $servername = "localhost";
 $username = "root";
 $password = "";
 $db = "corpus_bhsindo";
+$driver = 'mysqli';
+
 
 // Create connection
 $conn = new mysqli($servername, $username, $password,$db);
@@ -89,12 +92,27 @@ p.counting{
 <div id="wrapper">
 	<div id="title"><a href="home">Codeception Code Generator</a></div>
     <div id="content">
-        <form action="search_text.php" method="post">
-            <textarea autofocus="" autocomplete="off" class="text-input" id="keyword" name="keyword" value="<?php echo @$keyword?>" ></textarea>
-            <textarea autofocus="" autocomplete="off" class="text-input" id="result_content" name="result_content" value="<?php echo @$result?>" ></textarea>
-            </div>
-            <input type="submit" name="submit" value="submit">
+        <form action="search_text.php" method="post" enctype="multipart/form-data">
+            <table>
+            <tr>
+                <td>
+                    <textarea autofocus="" autocomplete="off" class="text-input" id="keyword" name="keyword" value="<?php echo @$keyword?>" >
+                    </textarea>
+                </td>
+                <td>    
+                    <textarea class="text-input" id="result_content" name="result_content" value="<?php echo @$result?>" ></textarea>
+                </td>
+            </tr>
+            
+            <tr><td><input type="file" id="file-upload" name="file-upload"></td></tr>
+            <tr>
+                <td>
+                    <input type="submit" name="submit" value="submit">
+                </td>
+                </tr>
+            </table>
         </form>
+        </div>
         <div id="result">
         <?php
             if($result->num_rows > 0){
@@ -107,7 +125,7 @@ p.counting{
         ?>
         </div>
         <div>
-            <?
+            <?php
             if($hsl->num_rows>0){
                 while($row = $hsl->fetch_assoc()) {
                     echo "<span class='xtime'>".$row['id_class']."-".$row['name_class']."<br/></span>";
