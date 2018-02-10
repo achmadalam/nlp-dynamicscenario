@@ -1,0 +1,2 @@
+Mahasiswa tidak dapat melihat nilai kelas ketika dosen hanya simpan nilai.
+Mahasiswa tidak dapat melihat nilai kelas ketika dosen simpan nilai dan buka kunci nilai.

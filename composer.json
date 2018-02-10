@@ -1,4 +1,5 @@
 {
-    "name": "achmad/data_mining_se",
-    "require": {"sastrawi/sastrawi": "1.0.2"}
+    "require-dev": {
+        "codeception/codeception": "^2.3"
+    }
 }
