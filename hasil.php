@@ -7,6 +7,7 @@ $password = "";
 $db = "corpus_bhsindo";
 $driver = 'mysqli';
 
+session_start();
 
 // Create connection
 $conn = new mysqli($servername, $username, $password,$db);
@@ -17,12 +18,19 @@ $result = $conn->query($sql);
 $sql = "select id_class,name_class from master_class";
 
 $hsl = $conn->query($sql);
-            
+         
 ?>
 <html>
 <head>
 <title>Search Engine</title>
 <style type="text/css">
+textarea {
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+    resize:none;
+	width: 100%;
+}
 @font-face {
     font-family: Reckoner;
     src: url(ui/css/Reckoner_Bold.ttf);
@@ -38,27 +46,9 @@ $hsl = $conn->query($sql);
     color : #000000;
     text-decoration: none;
 }
-#result{
-    margin-top: 15px;
-    width: 500px;
-}
-#keyword {
-    font-size: 14px;
-    height: 30px;
-    padding: 5px;
-    width: 500px;
-    border-radius: 4px;
-    line-height: 20px;
-    background-color: #FFFFFF;
-    border: 1px solid #CCCCCC;
-    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset;
-    transition: border 0.2s linear 0s, box-shadow 0.2s linear 0s;
-}
+
 #result_content {
     font-size: 14px;
-    height: 30px;
-    padding: 5px;
-    width: 500px;
     border-radius: 4px;
     line-height: 20px;
     background-color: #FFFFFF;
@@ -93,14 +83,15 @@ p.counting{
 	<div id="title"><a href="home">Codeception Code Generator</a></div>
     <div id="content">
         <form action="search_text.php" method="post" enctype="multipart/form-data">
-            <table>
+            <table width="100%">
             <tr>
                 <td>
-                    <textarea autofocus="" autocomplete="off" class="text-input" id="keyword" name="keyword" value="<?php echo @$keyword?>" >
+                    <textarea rows="10" class="text-input" id="keyword" name="keyword" >
+                    <?php echo trim($_SESSION['teksasli'])?>
                     </textarea>
                 </td>
                 <td>    
-                    <textarea class="text-input" id="result_content" name="result_content" value="<?php echo @$result?>" ></textarea>
+                    <textarea rows="10" class="text-input" id="result_content" name="result_content"><?php echo $_SESSION["hasil"]?></textarea>
                 </td>
             </tr>
             

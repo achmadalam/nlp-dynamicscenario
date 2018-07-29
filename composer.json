@@ -1,5 +1,8 @@
 {
     "require-dev": {
         "codeception/codeception": "^2.3"
+    },
+    "require": {
+        "stichoza/google-translate-php": "^3.2"
     }
 }

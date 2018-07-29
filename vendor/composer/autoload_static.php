@@ -10,8 +10,8 @@ class ComposerStaticInitf0ec72445f4bf1ad059311458104f719
         '0e6d7bf4a5811bfa5cf40c5ccd6fae6a' => __DIR__ . '/..' . '/symfony/polyfill-mbstring/bootstrap.php',
         'a0edc8309cc5e1d60e3047b5df6b7052' => __DIR__ . '/..' . '/guzzlehttp/psr7/src/functions_include.php',
         'c964ee0ededf28c96ebd9db5099ef910' => __DIR__ . '/..' . '/guzzlehttp/promises/src/functions_include.php',
-        '6124b4c8570aa390c21fafd04a26c69f' => __DIR__ . '/..' . '/myclabs/deep-copy/src/DeepCopy/deep_copy.php',
         '37a3dc5111fe8f707ab4c132ef1dbc62' => __DIR__ . '/..' . '/guzzlehttp/guzzle/src/functions_include.php',
+        '6124b4c8570aa390c21fafd04a26c69f' => __DIR__ . '/..' . '/myclabs/deep-copy/src/DeepCopy/deep_copy.php',
     );
 
     public static $prefixLengthsPsr4 = array (
@@ -34,6 +34,7 @@ class ComposerStaticInitf0ec72445f4bf1ad059311458104f719
             'Symfony\\Component\\CssSelector\\' => 30,
             'Symfony\\Component\\Console\\' => 26,
             'Symfony\\Component\\BrowserKit\\' => 29,
+            'Stichoza\\GoogleTranslate\\' => 25,
             'Stecman\\Component\\Symfony\\Console\\BashCompletion\\' => 49,
         ),
         'P' => 
@@ -67,8 +68,8 @@ class ComposerStaticInitf0ec72445f4bf1ad059311458104f719
         'phpDocumentor\\Reflection\\' => 
         array (
             0 => __DIR__ . '/..' . '/phpdocumentor/reflection-common/src',
-            1 => __DIR__ . '/..' . '/phpdocumentor/type-resolver/src',
-            2 => __DIR__ . '/..' . '/phpdocumentor/reflection-docblock/src',
+            1 => __DIR__ . '/..' . '/phpdocumentor/reflection-docblock/src',
+            2 => __DIR__ . '/..' . '/phpdocumentor/type-resolver/src',
         ),
         'Webmozart\\Assert\\' => 
         array (
@@ -109,6 +110,10 @@ class ComposerStaticInitf0ec72445f4bf1ad059311458104f719
         'Symfony\\Component\\BrowserKit\\' => 
         array (
             0 => __DIR__ . '/..' . '/symfony/browser-kit',
+        ),
+        'Stichoza\\GoogleTranslate\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/stichoza/google-translate-php/src/Stichoza/GoogleTranslate',
         ),
         'Stecman\\Component\\Symfony\\Console\\BashCompletion\\' => 
         array (
@@ -159,6 +164,10 @@ class ComposerStaticInitf0ec72445f4bf1ad059311458104f719
     public static $prefixesPsr0 = array (
         'S' => 
         array (
+            'Stichoza\\GoogleTranslate\\' => 
+            array (
+                0 => __DIR__ . '/..' . '/stichoza/google-translate-php/src',
+            ),
             'Sastrawi\\' => 
             array (
                 0 => __DIR__ . '/..' . '/sastrawi/sastrawi/src',
